@@ -4,7 +4,7 @@ import React from 'react';
  
 	
 interface params {
-	
+	isFull?: boolean;
 }
 	
  
@@ -12,7 +12,7 @@ interface params {
 const Table = (values: params)
 	
 : React.ReactNode => {
-	
+	if (values.isFull) return (<div className="table"> <div className="costumer"></div> </div>)
   return (<div className="table">  </div>)
 	
 }
