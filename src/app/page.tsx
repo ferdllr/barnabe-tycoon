@@ -6,22 +6,50 @@ import Stage from './components/Stage'
 import bg from '../../public/floor.png'
 import { useState } from "react"
 
-var money = 100;
 export default function Home() {
+
+  /* hooks */
   const [mainInput, changeInputsCat] = useState(1)
-  const [tables, setTables] = useState<JSX.Element[]>([]);
+  const [tables, setTables] = useState<boolean[]>([]);
   const [StageBool, createStage] = useState(false)
+  const [money, setMoney] = useState(100);
+
+  /* funções */
   function addTable(){
     if(tables.length == 4) return
-    const newTable = <Table key={tables.length}/>;
-    setTables([...tables, newTable]);
+    if (money < 20) return
+    setTables(prevTables => [...prevTables, false]);
+    setMoney(money - 20);
   }
   
   function addStage(){
     if (money < 60)return;
 
     createStage(true)
-    money -=60;
+    setMoney(money - 60);
+  }
+
+  function createCostumer(){
+    console.log(tables)
+    const randomNum = Math.floor(Math.random() * tables.length);
+    if (tables[randomNum]) return
+    setTables(prevTables => {
+      const newTables = [...prevTables]
+      newTables[randomNum] = true
+      return newTables
+    })
+    
+  }
+
+  function helpCustomer(val: number){
+    if(!tables[val]) return
+    setTables(prevTables => {
+      const newTables = [...prevTables];
+      newTables[val] = false;
+      return newTables;
+    })
+    console.log("mesa: " + tables)
+    setMoney(money + 20)
   }
 
   function mainInputs(){
@@ -30,12 +58,21 @@ export default function Home() {
       <button className='main-buttons' onClick={() => addTable()}>mesa (20R$)</button>
     </div>)
     return (<div className="main-inputs">
-      <button className='main-buttons'>atender</button>
-      <button className='main-buttons'>fechar</button>
-      <button className='main-buttons'>cliente</button>
+      <button className='main-buttons-fechar'>fechar</button>
+      <h4>atender clientes:</h4>
+      <div>
+      {tables.map((isFull, index) => (
+            <button key={index} onClick={() => helpCustomer(index)}>
+              Mesa {index + 1}
+            </button>
+          ))}
+      </div>
+      <button onClick={() => createCostumer()}> gerar cliente</button>
+      
     </div>)
   }
-
+  
+  /*JSX do site*/
   return (
     <main className={styles.main}>
       <div className="game-display-container"> 
@@ -43,7 +80,9 @@ export default function Home() {
           <Stage HaveStage={StageBool}></Stage>
         </div>
         <div className='table-container'>
-          {tables}
+        {tables.map((isFull, index) => (
+          <Table key={index} isFull={isFull} />
+        ))}
         </div>
       </div>
       <div className="game-input-container">
