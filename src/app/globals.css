@@ -1,0 +1,104 @@
+:root {
+  --max-width: 100vh;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+}
+
+
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.game-display-container{
+  display:flex;
+  flex-direction: column;
+  width: 550px;
+  height: 300px;
+  background-image: url('/floor.png');
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: black;
+}
+.game-input-container{
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+  height: 450px;
+  background-color: #B68B3D;
+  margin-top: 1%;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: black;
+}
+.left-side{
+  position:inherit;
+  display: flex;
+  flex-direction: column;
+  background-color: #613F00;
+  height: 100%;
+  width: 25%;
+  align-items: center;
+  justify-items: center;
+  gap: 190px;
+  padding: 5%;
+}
+.left-buttons{
+  width: 110px;
+  height: 25%;
+  background-color: #362709;
+  color: white;
+  border: #4e260086;
+  border-radius: 5%;
+}
+.main-inputs{
+  height: 90%;
+  width: 60%;
+  margin: 25px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50%;
+}
+.main-buttons{
+width: 90px;
+height: 50px;
+background-color: #FFE1AA;
+border: #00000086;
+border-radius: 5%;
+}
+.table{
+  position:inherit;
+  width: 60px;
+  height: 60px;
+  background-color: #ff7b00;
+  margin: 5px;
+}
+.stage{
+  position:inherit;
+  width: 109px;
+  height: 60px;
+  background-color: #5a2c00;
+  margin-left: 220px;
+}
+.table-container{
+  padding: 5%;
+  margin-top: 30px;
+  margin-left: 20%;
+  width: 400px;
+  height: 190px;
+  background-color: #4e260086;
+}
+.tables-section{
+display: flex;
+flex-direction: row;
+width: 95%;
+height: 100%;
+gap: 20px;
+}
+.topside-display{
+  width: 100%;
+  height: 90px;
+}
