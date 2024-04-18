@@ -2,62 +2,48 @@
 import Table from '../components/Table'
 import Stage from '../components/Stage'
 import { useState } from "react"
+import { useMesaStore, useMoneyStore, useStageStore } from '../store/ItemsStore'
 import './game.css'
 export default function Home() {
 
 
   /* hooks */
   const [inputs, setInputs] = useState(1)
-  const [tables, setTables] = useState<boolean[]>([]);
-  const [stage, setStage] = useState<boolean[]>([])
-  const [money, setMoney] = useState(100);
+  const {tables, addTable, addCostumer, removeCostumer} = useMesaStore();
+  const {stage, addStage, inUse, useStage} = useStageStore()
+  const {money, addMoney, removeMoney} = useMoneyStore()
 
 
   /*player stats*/
 
 
   /* funções */
-  function addTable(){
-    if(tables.length == 4) return
-    if (money < 20) return
-    setTables(prevTables => [...prevTables, false]);
-    setMoney(money - 20);
-  }
-  
-  function addStage(){
-    if (stage.length != 0) return; 
-    if (money < 60)return;
-    setStage([false])
-    setMoney(money - 60);
+
+  function buyItem(price: number, func: () => void){
+    if (money < price) return
+    removeMoney(price)
+    func()
   }
 
   function createCostumer(){
     console.log(tables)
     const randomNum = Math.floor(Math.random() * tables.length);
     if (tables[randomNum]) return
-    setTables(prevTables => {
-      const newTables = [...prevTables]
-      newTables[randomNum] = true
-      return newTables
-    })
+    addCostumer(randomNum)
     
   }
 
   function helpCustomer(val: number){
     if(!tables[val]) return
-    setTables(prevTables => {
-      const newTables = [...prevTables];
-      newTables[val] = false;
-      return newTables;
-    })
+    removeCostumer(val)
     console.log("mesa: " + tables)
-    setMoney(money + 20)
+    addMoney(20)
   }
 
   function mainInputs(){
     if (inputs == 1) return (<div className="main-inputs">
-      <button className='main-buttons' onClick={() => addStage()}>palco (60R$)</button>
-      <button className='main-buttons' onClick={() => addTable()}>mesa (20R$)</button>
+      <button className='main-buttons' onClick={() => buyItem(60, addStage)}>palco (60R$)</button>
+      <button className='main-buttons' onClick={() => buyItem(20, addTable)}>mesa (20R$)</button>
     </div>)
     return (<div className="main-inputs">
       <button className='main-buttons-fechar'>fechar</button>
@@ -69,7 +55,7 @@ export default function Home() {
             </button>
           ))}
       </div>
-      <button onClick={() => createCostumer()}> gerar cliente</button>
+      <button onClick={createCostumer}> gerar cliente</button> 
       
     </div>)
   }
@@ -79,9 +65,7 @@ export default function Home() {
     <main className='main'>
       <div className="game-display-container"> 
         <div className="topside-display">
-        {stage.map((HasBand, index) => (
-          <Stage key={index} HasBand={stage[0]} />
-        ))}
+        {stage ? <Stage HasBand={inUse}></Stage>: null}
         </div>
         <div className='table-container'>
         {tables.map((isFull, index) => (
