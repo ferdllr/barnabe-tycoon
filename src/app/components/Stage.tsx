@@ -4,7 +4,6 @@ import React from 'react';
  
 	
 interface params {
-    HaveStage?: boolean;
 	HasBand?: boolean;
 }
 	
@@ -13,10 +12,7 @@ interface params {
 const Stage = (values: params)
 	
 : React.ReactNode => {
-    if(values.HaveStage){
-        return (<div className="stage">  </div>)
-    }
-    return(<div></div>)
+    return (<div className="stage">  </div>)
 	
 }
 	
