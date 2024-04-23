@@ -1,11 +1,7 @@
 
 'use client'
-import { redirect, RedirectType, useRouter } from 'next/navigation'
+import {useRouter } from 'next/navigation'
 import './homepage.css'
-import { useState } from 'react';
-import Shop from './components/Menus/Shop';
-import { useMesaStore, useStageStore } from './store/ItemsStore';
-import { useMoneyStore } from './store/MoneyStore';
 export default function Home() {
     const router = useRouter()
     return (
