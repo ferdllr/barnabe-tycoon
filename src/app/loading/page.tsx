@@ -8,26 +8,27 @@ import GameDisplay from '../components/GameDisplay/gameDisplay';
 
 
 export default function Home() {
-    const router = useRouter()
+    const router = useRouter() //objeto para mudar as rotas do site (exemplo: de localhost:3000 para localhost:3000/game)
     function saveCheck(){
         if (typeof window === 'undefined') return
-        if(localStorage.getItem("gameSave") != null){
+        if(localStorage.getItem("gameSave") != null){ //verifica se o jogador possui save
             return(<main className='homepage-main'>
                 <div>
                 <h1>voce ja tem um jogo salvo, deseja carrega-lo?</h1>
-                <GameDisplay></GameDisplay>
-                <button className='choice-button' onClick={() => {router.push('/game')}}>s</button>
+                <GameDisplay></GameDisplay> {/* display do jogo */}
+                <button className='choice-button' onClick={() => {router.push('/game')}}>Sim</button> {/* caso o jogador não deseje reiniciar o jogo */}
                 <button className='choice-button' onClick={() => {
-                    localStorage.removeItem('gameSave');
-                    router.push('/game')
-                    router.refresh();
-                    location.reload()}
+                    localStorage.removeItem('gameSave'); //remove o save do jogador
+                    router.push('/game') //redireciona o jogador pra pagina do jogo
+                    router.refresh(); //reinicia a rota do jogo
+                    location.reload() //reinicia a pagina do google
+                }
 
-                    }>n</button>
+                    }>Não</button> {/* caso o jogador deseje reiniciar o jogo */}
             </div>
             </main>)
         }
-        permanentRedirect('/game')
+        router.replace('/game') //caso o jogador não tenha nenhum save o jogador é automatimante redirecionado para o jogo e o historico é apagado
     }
     return (<div>{saveCheck()}</div>)
 }

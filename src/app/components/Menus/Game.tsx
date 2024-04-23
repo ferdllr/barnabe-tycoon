@@ -12,24 +12,23 @@ interface params {
 const Game = (values: params)
 	
 : React.ReactNode => {
-
+    //importando variaveis do zustand
     const {tables, addCostumer, removeCostumer} = useMesaStore();
     const {addMoney} = useMoneyStore()
 
 
-    function createCostumer(){
+    function createCostumer(){ //função pra adicionar clientes
         console.log(tables)
-        const randomNum = Math.floor(Math.random() * tables.length);
-        if (tables[randomNum]) return
-        addCostumer(randomNum)
+        const randomNum = Math.floor(Math.random() * tables.length); //seleciona mesa aleatoria
+        if (tables[randomNum]) return //se a mesa ja estiver ocupada, nada acontece
+        addCostumer(randomNum) //adiciona cliente na mesa
         
       }
     
-      function helpCustomer(val: number){
-        if(!tables[val]) return
-        removeCostumer(val)
-        console.log("mesa: " + tables)
-        addMoney(20)
+      function helpCustomer(val: number){//função para atender clientes
+        if(!tables[val]) return //verifica se a mesa esta vazia
+        removeCostumer(val) //remove cliente
+        addMoney(20) //recebe dinheiro do cliente
       }
 
 
@@ -42,7 +41,7 @@ const Game = (values: params)
             <button key={index} onClick={() => helpCustomer(index)}>
                 Mesa {index + 1}
             </button>
-            ))}
+            ))} {/* renderiza o botao de todas as mesas dentro do array "tables" */}
         </div>
         <button onClick={createCostumer}> gerar cliente</button> 
     </div>)

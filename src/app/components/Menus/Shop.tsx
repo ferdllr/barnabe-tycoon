@@ -13,17 +13,18 @@ interface params {
 const Shop = (values: params)
 	
 : React.ReactNode => {
+    //importando variaveis do zustand
     const {addTable, tables} = useMesaStore();
-    const {addStage, stage} = useStageStore()
+    const {addStage} = useStageStore()
     const {money, removeMoney} = useMoneyStore()
 
-    function buyItem(price: number, func: () => void){
+    function buyItem(price: number, func: () => void){ //função de comprar item, onde você define o preço e a função para adicionar ele no jogo
         if (money < price) return
         removeMoney(price)
         func()
       }
     
-    function tableCheck(){
+    function tableCheck(){ //função para checar se chegou no total de mesas
       if(tables.length >= 8) return
       buyItem(20, addTable)
     }

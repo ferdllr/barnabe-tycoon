@@ -12,15 +12,15 @@ interface params {
 const Stats = (values: params)
 	
 : React.ReactNode => {
-
+    //importando variaveis do zustand
     const {tables} = useMesaStore();
     const {money} = useMoneyStore()
     const {stage} = useStageStore()
 
 
-    function setSave(){
+    function setSave(){ //botão de salvar jogo
         const save = JSON.stringify({"tables": tables, "money": money, "stage": stage})
-        localStorage.setItem("gameSave", save);
+        localStorage.setItem("gameSave", save); //acessa localStorage do chrome e define o save
     }
 
 
