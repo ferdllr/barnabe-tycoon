@@ -1,7 +1,6 @@
 	
 import React from 'react';
-import { useMesaStore, useStageStore } from '../../store/ItemsStore';
-import { useMoneyStore } from '@/app/store/MoneyStore';
+import {useMoneyStore, useMesaStore, useStageStore } from '../../store/ItemsStore';
 
 
  

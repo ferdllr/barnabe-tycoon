@@ -1,6 +1,5 @@
 	
-import { useMesaStore, useStageStore } from '@/app/store/ItemsStore';
-import { useMoneyStore } from '@/app/store/MoneyStore';
+import {useMoneyStore, useMesaStore} from '@/app/store/ItemsStore';
 import React from 'react';
 
  
