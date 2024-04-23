@@ -2,18 +2,19 @@
 import Table from '../components/Items/Table'
 import Stage from '../components/Items/Stage'
 import { useState } from "react"
-import { useMesaStore, useMoneyStore, useStageStore } from '../store/ItemsStore'
+import { useMesaStore, useStageStore } from '../store/ItemsStore'
 import './game.css'
 import Shop from '../components/Menus/Shop'
 import Game from '../components/Menus/Game'
+import { useMoneyStore } from '../store/MoneyStore'
+import Stats from '../components/Menus/Stats'
 export default function Home() {
-
-
   /* hooks */
   const [menu, setMenu] = useState<JSX.Element>(<Shop></Shop>)
   const {tables} = useMesaStore();
   const {stage,inUse} = useStageStore()
   const {money} = useMoneyStore()
+
   return (
     <main className='main'>
       <div className="game-display-container"> 
@@ -29,6 +30,7 @@ export default function Home() {
       <div className="game-input-container">
         <div className='left-side'>
           <button className='left-buttons' onClick={() => setMenu(<Game></Game>)}>Game</button>
+          <button className='left-buttons' onClick={() => setMenu(<Stats></Stats>)}>stats</button>
           <button className='left-buttons' onClick={() => setMenu(<Shop></Shop>)}>shop</button>
         </div>
           {menu}

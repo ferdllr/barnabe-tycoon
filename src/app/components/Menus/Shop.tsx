@@ -1,6 +1,8 @@
 	
 import React from 'react';
-import { useMesaStore, useMoneyStore, useStageStore } from '../../store/ItemsStore';
+import { useMesaStore, useStageStore } from '../../store/ItemsStore';
+import { useMoneyStore } from '@/app/store/MoneyStore';
+
 
  
 	
@@ -12,11 +14,12 @@ interface params {
 const Shop = (values: params)
 	
 : React.ReactNode => {
-    const {addTable} = useMesaStore();
-    const {addStage} = useStageStore()
+    const {addTable, tables} = useMesaStore();
+    const {addStage, stage} = useStageStore()
     const {money, removeMoney} = useMoneyStore()
 
     function buyItem(price: number, func: () => void){
+      if (tables.length > 8) return
         if (money < price) return
         removeMoney(price)
         func()
