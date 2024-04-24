@@ -1,6 +1,6 @@
 	
-import {useMoneyStore, useMesaStore} from '@/app/store/ItemsStore';
-import React from 'react';
+import {useMoneyStore, useMesaStore, useBarStore} from '@/app/store/ItemsStore';
+import React, { useEffect, useState } from 'react';
 
  
 	
@@ -12,16 +12,16 @@ interface params {
 const Game = (values: params)
 	
 : React.ReactNode => {
+    
     //importando variaveis do zustand
     const {tables, addCostumer, removeCostumer} = useMesaStore();
     const {addMoney} = useMoneyStore()
+    const {open, reputation, setOpen} = useBarStore()
 
 
     function createCostumer(){ //função pra adicionar clientes
-        console.log(tables)
         const randomNum = Math.floor(Math.random() * tables.length); //seleciona mesa aleatoria
-        if (tables[randomNum]) return //se a mesa ja estiver ocupada, nada acontece
-        addCostumer(randomNum) //adiciona cliente na mesa
+        if (!tables[randomNum]) addCostumer(randomNum) //adiciona cliente na mesa
         
       }
     
@@ -31,10 +31,24 @@ const Game = (values: params)
         addMoney(20) //recebe dinheiro do cliente
       }
 
+      function customerButton(){
+        if (reputation == 0) return (<h3>compre uma mesa para iniciar o jogo!</h3>)
+        if (open) return (<button className='main-buttons-fechar' onClick={() => setOpen(false)}>fechar</button>)
+        else return (<button className='main-buttons-abrir' onClick={() => setOpen(true)}>abrir</button>)
+      }
+      
+      useEffect(() => {
+        var repCalc = ((10 - reputation) * 500)
+        if (!open) return;
+        const intervalId = setInterval(createCostumer, repCalc);
+        console.log(repCalc)
+        return () => clearInterval(intervalId); // Limpa o intervalo quando o componente é desmontado
+    }, [open]); // Chama useEffect sempre que 'open' mudar
+
 
     return (
     <div className="main-inputs">
-        <button className='main-buttons-fechar'>fechar</button>
+        {customerButton()}
         <h4>atender clientes:</h4>
         <div>
         {tables.map((isFull, index) => (
@@ -43,7 +57,6 @@ const Game = (values: params)
             </button>
             ))} {/* renderiza o botao de todas as mesas dentro do array "tables" */}
         </div>
-        <button onClick={createCostumer}> gerar cliente</button> 
     </div>)
 	
 }

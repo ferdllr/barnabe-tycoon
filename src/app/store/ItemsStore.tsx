@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+
 import { create } from 'zustand';
 
 type TableState = {
@@ -24,8 +24,21 @@ type StageState = {
   resetStage: () => void;
 };
 
+type BarState = {
+  open: boolean;
+  reputation: number;
+  setOpen:(val: boolean) => void;
+  setReputation: (val: number) => void;
+}
 
-const useMesaStore = create<TableState>((set) => ({
+export const useBarStore = create<BarState>((set) => ({
+  open: false,
+  reputation: 0,
+  setOpen: (val: boolean) => set((state) => ({open: val})),
+  setReputation: (val: number) => set((state) => ({reputation: val}))
+}))
+
+export const useMesaStore = create<TableState>((set) => ({
   tables: [],
   addTable: () => set((state) => ({ tables: [...state.tables, false] })),
   resetTable: () => set({ tables: [] }),
@@ -39,7 +52,7 @@ const useMesaStore = create<TableState>((set) => ({
     })),
 }));
 
-const useStageStore = create<StageState>((set) => ({
+export const useStageStore = create<StageState>((set) => ({
   stage: false,
   inUse: false,
   resetStage: () => set({ stage: false, inUse: false }),
@@ -55,9 +68,9 @@ export const useMoneyStore = create<MoneyState>((set) => ({
 }));
 
 function getData(){
-  var storage = { money: 20, tables: [], stage: false }
+  var storage = { money: 20, tables: [], stage: false, reputation: 0 }
   if (typeof window != 'undefined'){
-    storage = JSON.parse(localStorage.getItem("gameSave") || '{ "money": 20, "tables": [], "stage": false }')
+    storage = JSON.parse(localStorage.getItem("gameSave") || '{ "money": 20, "tables": [], "stage": false , "reputation": 0}')
   }
   
   return storage
@@ -66,7 +79,4 @@ function getData(){
 useMesaStore.setState({ tables: getData().tables });
 useStageStore.setState({ stage: getData().stage, inUse: false });
 useMoneyStore.setState({ money: getData().money });
-
-
-
-export { useMesaStore, useStageStore };
+useBarStore.setState({ reputation: getData().reputation });

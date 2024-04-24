@@ -156,6 +156,25 @@ border-radius: 5%;
   border: #00000086;
 }
 
+.main-buttons-abrir{
+  width: 20%;
+  height: 10%;
+  margin-left: 95%;
+  background-color: rgb(58, 255, 68);
+  color: rgb(0, 0, 0);
+  border: #00000086;
+  border-radius: 5%;
+}
+
+.main-buttons-abrir:active{
+  width: 20%;
+  height: 10%;
+  margin-left: 98%;
+  background-color: rgb(74, 255, 58);
+  color: rgb(74, 255, 58);
+  border: #00000086;
+}
+
 @media (max-width: 895px) {
 	h2 {
     font-size: 100%;

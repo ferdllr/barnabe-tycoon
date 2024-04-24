@@ -1,6 +1,6 @@
 	
 import React from 'react';
-import {useMoneyStore, useMesaStore, useStageStore } from '../../store/ItemsStore';
+import {useMoneyStore, useMesaStore, useStageStore, useBarStore } from '../../store/ItemsStore';
 
 
  
@@ -8,7 +8,10 @@ import {useMoneyStore, useMesaStore, useStageStore } from '../../store/ItemsStor
 interface params {
 }
 	
-
+enum ItemType {
+  TABLE,
+  COSMETIC
+}
 	
 const Shop = (values: params)
 	
@@ -17,20 +20,18 @@ const Shop = (values: params)
     const {addTable, tables} = useMesaStore();
     const {addStage} = useStageStore()
     const {money, removeMoney} = useMoneyStore()
+    const {reputation, setReputation} = useBarStore()
 
-    function buyItem(price: number, func: () => void){ //função de comprar item, onde você define o preço e a função para adicionar ele no jogo
-        if (money < price) return
-        removeMoney(price)
-        func()
+    function buyItem(price: number, func: () => void, itemType: ItemType){ //função de comprar item, onde você define o preço e a função para adicionar ele no jogo  
+      if (money < price) return
+      if (itemType = ItemType.TABLE && tables.length >= 8)return
+      setReputation(reputation + 1)
+      removeMoney(price)
+      func()
       }
-    
-    function tableCheck(){ //função para checar se chegou no total de mesas
-      if(tables.length >= 8) return
-      buyItem(20, addTable)
-    }
     return (<div className="main-inputs">
-    <button className='main-buttons' onClick={() => buyItem(60, addStage)}>Palco | 60R$</button>
-    <button className='main-buttons' onClick={() => tableCheck()}>Mesa | 20R$</button>
+    <button className='main-buttons' onClick={() => buyItem(60, addStage, ItemType.COSMETIC)}>Palco | 60R$</button>
+    <button className='main-buttons' onClick={() => buyItem(20, addTable, ItemType.TABLE)}>Mesa | 20R$</button>
   </div>)
 	
 }
