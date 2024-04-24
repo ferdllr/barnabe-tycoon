@@ -65,7 +65,7 @@ function getData(){
 
 useMesaStore.setState({ tables: getData().tables });
 useStageStore.setState({ stage: getData().stage, inUse: false });
-useMoneyStore.setState({ money: 200 });
+useMoneyStore.setState({ money: getData().money });
 
 
 
