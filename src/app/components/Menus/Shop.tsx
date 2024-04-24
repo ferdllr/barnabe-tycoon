@@ -29,8 +29,8 @@ const Shop = (values: params)
       buyItem(20, addTable)
     }
     return (<div className="main-inputs">
-    <button className='main-buttons' onClick={() => buyItem(60, addStage)}>palco (60R$)</button>
-    <button className='main-buttons' onClick={() => tableCheck()}>mesa (20R$)</button>
+    <button className='main-buttons' onClick={() => buyItem(60, addStage)}>Palco | 60R$</button>
+    <button className='main-buttons' onClick={() => tableCheck()}>Mesa | 20R$</button>
   </div>)
 	
 }
