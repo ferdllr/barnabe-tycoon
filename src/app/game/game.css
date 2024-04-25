@@ -140,7 +140,7 @@ border-radius: 5%;
 .main-buttons-fechar{
   width: 20%;
   height: 10%;
-  margin-left: 95%;
+  margin-left: 92%;
   background-color: rgb(255, 58, 58);
   color: white;
   border: #00000086;
@@ -150,7 +150,7 @@ border-radius: 5%;
 .main-buttons-fechar:active{
   width: 20%;
   height: 10%;
-  margin-left: 98%;
+  margin-left: 92%;
   background-color: rgb(255, 58, 58);
   color: rgb(255, 58, 58);
   border: #00000086;
@@ -159,7 +159,7 @@ border-radius: 5%;
 .main-buttons-abrir{
   width: 20%;
   height: 10%;
-  margin-left: 95%;
+  margin-left: 92%;
   background-color: rgb(58, 255, 68);
   color: rgb(0, 0, 0);
   border: #00000086;
@@ -169,7 +169,7 @@ border-radius: 5%;
 .main-buttons-abrir:active{
   width: 20%;
   height: 10%;
-  margin-left: 98%;
+  margin-left: 92%;
   background-color: rgb(74, 255, 58);
   color: rgb(74, 255, 58);
   border: #00000086;
