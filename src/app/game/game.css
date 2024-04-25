@@ -19,8 +19,8 @@ html {
 
 h2 {
   font-size: 100%;
-  margin-top: 32%;
-  margin-right: 1%;
+  margin-top: 90px;
+  margin-right: 2px;
 }
 
 .main {
@@ -178,7 +178,7 @@ border-radius: 5%;
 @media (max-width: 895px) {
 	h2 {
     font-size: 100%;
-    margin-top: 38%;
+    margin-top: 32%;
     margin-right: 1%;
   }
 }
