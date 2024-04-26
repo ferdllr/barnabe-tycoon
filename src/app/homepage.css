@@ -1,4 +1,7 @@
 
+html {
+    background-color: #4F4527;
+}
 
 .homepage-main{
     width: 100vw;
@@ -8,19 +11,12 @@
     justify-content: space-between;
     align-items: center;
     background-image: url('/HomepageBackground.png');
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100%;
     
 }
-.main-menu{
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-    width: 60%;
-    align-items: center;
-}
 
-.main-title{
-    font-size: 70px;
-    font-family: 'Comic Sans';
+.play-input {
+    width: 100%;
 }

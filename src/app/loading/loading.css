@@ -1,18 +1,36 @@
 
 .homepage-main{
-    min-width: 100%;
+    min-width: 558px;
+    height: inherit;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 15rem;
     min-height: 100vh;
-    background-color: #c98600;
+    background-color: #4F4527;
 }
+
+h1 {
+    color: white;    
+    background-color: #4f45278c;
+}
+
 .choice-button{
     width: 150px;
     height: 80px;
     border: #c98600;
     background-color: #FFE1AA;
     margin: 10px;
+    border-radius: 6%;
 }
+
+.choice-button:hover{
+    width: 152px;
+    height: 82px;
+    border: #c98600;
+    background-color: #ffebc5;
+    margin: 10px;
+    border-radius: 6%;
+}
+

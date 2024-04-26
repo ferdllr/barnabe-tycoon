@@ -109,8 +109,8 @@ h2 {
 .itens-row{
   width: 100%;
   height: 35%;
-  background-color: #8B7346;
   margin-bottom: 8%;
+  background-color: #613F00;
   padding: 2%;
   border-radius: 2%;
 }
@@ -126,12 +126,12 @@ border-radius: 5%;
 }
 
 .main-buttons:hover {
-min-width: 52px;
-width: 26%;
-height: 52px;
+min-width: 50px;
+width: 25%;
+height: 50px;
 margin-bottom: 1%;
 margin-right: 3%;
-background-color: #FFE1AA;
+background-color: #ffeecf;
 border: #00000086;
 border-radius: 5%;
 }
@@ -195,6 +195,61 @@ border-radius: 5%;
   border-radius: 5%;
 }
 
+.table-interact-buttons:hover{
+  min-width: 30px;
+  width: 25%;
+  height: 20px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #ffeecf;
+  border: #00000086;
+  border-radius: 5%;
+}
+
+.table-interact-buttons:active{
+  min-width: 30px;
+  width: 25%;
+  height: 20px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #fdd892;
+  border: #00000086;
+  border-radius: 5%;
+}
+
+.save-button {
+  min-width: 30px;
+  width: 25%;
+  height: 20px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #FFE1AA;
+  border: #00000086;
+  border-radius: 5%;
+}
+
+.save-button:hover {
+  min-width: 30px;
+  width: 25%;
+  height: 20px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #ffeecf;
+  border: #00000086;
+  border-radius: 5%;
+}
+
+.save-button:active {
+  min-width: 30px;
+  width: 25%;
+  height: 20px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #fdd892;
+  border: #00000086;
+  border-radius: 5%;
+}
+
 @media (max-width: 895px) {
 	h2 {
     font-size: 100%;
@@ -205,7 +260,7 @@ border-radius: 5%;
 
 @media (max-width: 879px) {
 	.main-buttons{
-    font-size: 11px;
+    font-size: 10px;
     min-width: 50px;
     width: 25%;
     height: 50px;
@@ -217,22 +272,22 @@ border-radius: 5%;
     }
     
     .main-buttons:hover {
-    min-width: 52px;
-    width: 26%;
-    height: 52px;
+    min-width: 50px;
+    width: 25%;
+    height: 50px;
     margin-bottom: 1%;
     margin-right: 3%;
-    background-color: #FFE1AA;
+    background-color: #ffeecf;
     border: #00000086;
     border-radius: 5%;
     }
     
     .main-buttons:active {
-    min-width: 48px;
+    min-width: 49px;
     width: 24%;
-    height: 48px;
+    height: 49px;
     margin-bottom: 1%;
-    background-color: #FFE1AA;
+    background-color: #fdd892;
     border: #00000086;
     border-radius: 5%;
     }
@@ -344,21 +399,21 @@ border-radius: 5%;
 }
 
 .main-buttons:hover {
-min-width: 52px;
-width: 28%;
-height: 52px;
+min-width: 50px;
+width: 25%;
+height: 50px;
 margin-bottom: 1%;
-background-color: #FFE1AA;
+background-color: #ffeecf;
 border: #00000086;
 border-radius: 5%;
 }
 
 .main-buttons:active {
-min-width: 48px;
-width: 24%;
-height: 48px;
+min-width: 50px;
+width: 25%;
+height: 50px;
 margin-bottom: 1%;
-background-color: #FFE1AA;
+background-color: #fdd892;
 border: #00000086;
 border-radius: 5%;
 }
@@ -414,6 +469,18 @@ border-radius: 5%;
   margin-bottom: 1%;
   margin-right: 3%;
   background-color: #FFE1AA;
+  border: #00000086;
+  border-radius: 5%;
+}
+
+.table-interact-buttons:active{
+  font-size: 8px;
+  min-width: 10px;
+  width: 25%;
+  height: 20px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #fdd892;
   border: #00000086;
   border-radius: 5%;
 }

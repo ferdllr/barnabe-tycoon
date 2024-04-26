@@ -34,7 +34,7 @@ const Stats = (values: params)
         <h4>cadeiras de bar: {chairs.length}</h4>
         <h4>reputação: {reputation}</h4>
         <div>
-            <button onClick={() => setSave()}>salvar jogo</button>
+            <button className='save-button' onClick={() => setSave()}>Salvar jogo</button>
         </div>
     </div>)
 	

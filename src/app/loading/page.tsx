@@ -16,7 +16,7 @@ export default function Home() {
         const saveCheck = () => {
             if (typeof window !== 'undefined' && localStorage.getItem("gameSave") !== null){
                 setPage(<div>
-                    <h1>voce ja tem um jogo salvo, deseja carrega-lo?</h1>
+                    <h1>Você já tem um jogo salvo, deseja carregá-lo?</h1>
                     <GameDisplay></GameDisplay> {/* display do jogo */}
                     <button className='choice-button' onClick={() => {router.push('/game')}}>Sim</button> {/* caso o jogador não deseje reiniciar o jogo */}
                     <button className='choice-button' onClick={() => {
