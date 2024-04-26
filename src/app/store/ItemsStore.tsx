@@ -1,5 +1,6 @@
 
 import { create } from 'zustand';
+import betMachine from '../components/Items/betMachine/BetMachine';
 
 type TableState = {
   tables: boolean[];
@@ -37,6 +38,11 @@ type ChairState = {
   addChairCostumer: (id: number) => void;
   removeChairCostumer: (id: number) => void;
 };
+
+type BetMachineState = {
+  betMachine: boolean;
+  addBetMachine: () => void;
+}
 
 export const useBarStore = create<BarState>((set) => ({
   open: false,
@@ -79,6 +85,10 @@ export const useStageStore = create<StageState>((set) => ({
   addStage: () => set({ stage: true }),
   useStage: () => set({ inUse: true }),
 }));
+export const useBetMachine = create<BetMachineState>((set) => ({
+  betMachine: false,
+  addBetMachine: () => set({ betMachine: true }),
+}));
 
 export const useMoneyStore = create<MoneyState>((set) => ({
   money: 30,
@@ -88,9 +98,9 @@ export const useMoneyStore = create<MoneyState>((set) => ({
 }));
 
 function getData(){
-  var storage = { money: 30, tables: [], stage: false, reputation: 0, chairs: [] }
+  var storage = { money: 30, tables: [], stage: false, reputation: 0, chairs: [], betMachine: false }
   if (typeof window != 'undefined'){
-    storage = JSON.parse(localStorage.getItem("gameSave") || '{ "money": 30, "tables": [], "stage": false , "reputation": 0, "chairs": []}')
+    storage = JSON.parse(localStorage.getItem("gameSave") || '{ "money": 30, "tables": [], "stage": false , "reputation": 0, "chairs": [], "betMachine": false}')
   }
   
   return storage
@@ -101,3 +111,4 @@ useStageStore.setState({ stage: getData().stage, inUse: false });
 useMoneyStore.setState({ money: getData().money });
 useBarStore.setState({ reputation: getData().reputation });
 useChairStore.setState({ chairs: getData().chairs });
+useBetMachine.setState({betMachine: getData().betMachine})

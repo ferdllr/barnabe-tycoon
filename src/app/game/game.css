@@ -85,6 +85,35 @@ h2 {
   border-radius: 5%;
 }
 
+.betMachine-button{
+  max-width: 80px;
+  width: 130%;
+  height: 25%;
+  max-height: 25%;
+  background-color: #000000;
+  background-image:  radial-gradient(#f7ff6e 2px, transparent 2px), radial-gradient(#f7ff6e 2px, #000000 2px);
+  background-size:60px 60px;
+  background-position: 0 0,40px 40px;
+  color: rgb(255, 0, 0);
+  border: #4e260086;
+  border-radius: 5%;
+  font-family: "Comic Sans";
+}
+.betMachine-button:hover{
+  max-width: 82px;
+  width: 130%;
+  height: 25%;
+  max-height: 25%;
+  background-color: #000000;
+  background-image:  radial-gradient(#f7ff6e 2px, transparent 2px), radial-gradient(#f7ff6e 2px, #000000 2px);
+  background-size:70px 70px;
+  background-position: 0 0,40px 40px;
+  color: rgb(255, 0, 0);
+  border: #4e260086;
+  border-radius: 5%;
+  font-family: "Comic Sans";
+}
+
 .left-buttons:focus{
   max-width: 82px;
   width: 132%;

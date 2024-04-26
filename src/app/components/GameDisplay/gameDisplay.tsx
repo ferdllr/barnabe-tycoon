@@ -2,9 +2,9 @@
 import React from 'react';
 import Table from '../Items/Table';
 import Stage from '../Items/Stage';
-import { useMesaStore, useStageStore, useChairStore } from '@/app/store/ItemsStore';
+import { useMesaStore, useStageStore, useChairStore, useBetMachine } from '@/app/store/ItemsStore';
 import Chair from '../Items/chair';
-
+import BetMachine from '../Items/betMachine/BetMachine';
  
 	
 interface params {
@@ -17,6 +17,7 @@ const GameDisplay = (values: params)
     const {tables} = useMesaStore();
     const {stage, inUse} = useStageStore()
     const {chairs} = useChairStore()
+    const {betMachine} = useBetMachine()
 
     return (
     <div className="game-display-container"> 
@@ -34,6 +35,7 @@ const GameDisplay = (values: params)
                 <Table key={index} isFull={isFull} />
                 ))}
             </div>
+            {betMachine ? <BetMachine></BetMachine>: null}
         </div>
     </div>)
 	

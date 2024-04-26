@@ -45,6 +45,9 @@
   height: 60px;
   margin: 5px;
 }
+.betMachine{
+  position:relative;
+}
 .stage{
   position:inherit;
   margin-left: 220px;

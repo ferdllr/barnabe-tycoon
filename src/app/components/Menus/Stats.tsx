@@ -1,5 +1,5 @@
 	
-import {useMoneyStore, useMesaStore, useStageStore, useBarStore, useChairStore } from '@/app/store/ItemsStore';
+import {useMoneyStore, useMesaStore, useStageStore, useBarStore, useChairStore, useBetMachine } from '@/app/store/ItemsStore';
 import React from 'react';
 
  
@@ -18,10 +18,11 @@ const Stats = (values: params)
     const {stage} = useStageStore()
     const {reputation} = useBarStore()
     const {chairs} = useChairStore()
+    const {betMachine} = useBetMachine()
 
 
     function setSave(){ //botão de salvar jogo
-        const save = JSON.stringify({"tables": tables, "money": money, "stage": stage, "reputation": reputation, "chairs": chairs})
+        const save = JSON.stringify({"tables": tables, "money": money, "stage": stage, "reputation": reputation, "chairs": chairs, "betMachine": betMachine})
         localStorage.setItem("gameSave", save); //acessa localStorage do chrome e define o save
     }
 

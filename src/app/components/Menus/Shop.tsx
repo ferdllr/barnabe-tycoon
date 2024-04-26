@@ -1,6 +1,6 @@
 	
 import React, { useState } from 'react';
-import {useMoneyStore, useMesaStore, useStageStore, useBarStore, useChairStore } from '../../store/ItemsStore';
+import {useMoneyStore, useMesaStore, useStageStore, useBarStore, useChairStore, useBetMachine } from '../../store/ItemsStore';
 
 
  
@@ -11,7 +11,7 @@ interface params {
 enum ItemType {
   TABLE,
   COSMETIC,
-  CHAIR
+  CHAIR,
 }
 	
 const Shop = (values: params)
@@ -23,6 +23,7 @@ const Shop = (values: params)
     const {money, removeMoney} = useMoneyStore()
     const {reputation, setReputation} = useBarStore()
     const {chairs, addChair} = useChairStore()
+    const {betMachine, addBetMachine} = useBetMachine()
     const [tableCost, setTableCost] = useState(30)
     const [chairCost, setChairCost] = useState(10)
 
@@ -48,7 +49,8 @@ const Shop = (values: params)
       </div>
       <h4>cosmeticos:</h4>
       <div className='itens-row'>
-      <button className='main-buttons' onClick={() => buyItem(60, addStage, ItemType.COSMETIC, 3)}>Palco | 60R$</button>
+      <button className='main-buttons' onClick={() => buyItem(60, addStage, ItemType.COSMETIC, 2)}>Palco | 60R$</button>
+      <button className='main-buttons' onClick={() => buyItem(200, addBetMachine, ItemType.COSMETIC, 3)}>caçaníquel|200R$</button>
       </div>
     
     
