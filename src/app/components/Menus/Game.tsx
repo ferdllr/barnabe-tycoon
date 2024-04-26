@@ -1,5 +1,5 @@
 	
-import {useMoneyStore, useMesaStore, useBarStore} from '@/app/store/ItemsStore';
+import {useMoneyStore, useMesaStore, useBarStore, useChairStore} from '@/app/store/ItemsStore';
 import React, { useEffect, useState } from 'react';
 
  
@@ -7,7 +7,10 @@ import React, { useEffect, useState } from 'react';
 interface params {
 }
 	
- 
+enum ItemType  {
+  CHAIR,
+  TABLE
+}
 	
 const Game = (values: params)
 	
@@ -15,20 +18,35 @@ const Game = (values: params)
     
     //importando variaveis do zustand
     const {tables, addCostumer, removeCostumer} = useMesaStore();
+    const {chairs, addChairCostumer, removeChairCostumer} = useChairStore()
     const {addMoney} = useMoneyStore()
     const {open, reputation, setOpen} = useBarStore()
 
 
     function createCostumer(){ //função pra adicionar clientes
-        const randomNum = Math.floor(Math.random() * tables.length); //seleciona mesa aleatoria
-        if (!tables[randomNum]) addCostumer(randomNum) //adiciona cliente na mesa
-        
+        if(tables.length != 0) {
+          const randomTableNum = Math.floor(Math.random() * tables.length); //seleciona mesa aleatoria
+          if (!tables[randomTableNum]) addCostumer(randomTableNum) //adiciona cliente na mesa
+        }
+        if(chairs.length !=0){
+          const randomChairNum = Math.floor(Math.random() * chairs.length)
+          if (!chairs[randomChairNum]) addChairCostumer(randomChairNum)
+        }
       }
     
-      function helpCustomer(val: number){//função para atender clientes
-        if(!tables[val]) return //verifica se a mesa esta vazia
-        removeCostumer(val) //remove cliente
-        addMoney(20) //recebe dinheiro do cliente
+      function helpCustomer(val: number, itemType: ItemType){//função para atender clientes
+        if(itemType == ItemType.TABLE){
+          if(tables.length == 0) return;
+          if(!tables[val]) return //verifica se a mesa esta vazia
+          removeCostumer(val) //remove cliente
+          addMoney(10) //recebe dinheiro do cliente
+        }
+        if(itemType == ItemType.CHAIR){
+          if(chairs.length == 0) return;
+          if(!chairs[val]) return //verifica se a mesa esta vazia
+          removeChairCostumer(val) //remove cliente
+          addMoney(5) //recebe dinheiro do cliente
+        }
       }
 
       function customerButton(){
@@ -49,14 +67,20 @@ const Game = (values: params)
     return (
     <div className="main-inputs">
         {customerButton()}
-        <h4>atender clientes:</h4>
+        <h4>atender mesas:</h4>
         <div>
         {tables.map((isFull, index) => (
-            <button key={index} onClick={() => helpCustomer(index)} className="table-interact-buttons">
+            <button key={index} onClick={() => helpCustomer(index, ItemType.TABLE)} className="table-interact-buttons">
                 Mesa {index + 1}
             </button>
             ))} {/* renderiza o botao de todas as mesas dentro do array "tables" */}
         </div>
+        <h4>atender bar:</h4>
+        {chairs.map((isFull, index) => (
+            <button key={index} onClick={() => helpCustomer(index, ItemType.CHAIR)} className="table-interact-buttons">
+                Chairs {index + 1}
+            </button>
+            ))}
     </div>)
 	
 }

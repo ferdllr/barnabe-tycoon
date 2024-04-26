@@ -8,37 +8,48 @@
     border-width: 1.5px;
     border-color: black;
   }
-.table-container{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-gap: 20px;
-padding: 5%;
-margin-top: 30px;
-margin-left: 20%;
-width: 400px;
-height: 190px;
-}
+
 .topside-display{
     width: 100%;
-    height: 90px;
+    height: 31%;
+  }
+.middleside-display{
+  width: 100%;
+  height: 69%;
+  display: flex;
+  flex-direction: row;
+}
+.chairs-container{
+  width: 120px;
+  height: 90%;
+  margin-top: 3%;
+  background-image: url(../../../../public/bardesk.png);
+  background-repeat: no-repeat;
+  padding-left: 17%;
+}
+.table-container{
+  position:relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 5%;
+  width: 400px;
+  height: 124px;
+  margin-top: 2%;
+  margin-left: 3%;
+}
+.table{
+  position:inherit;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
   }
 .stage{
 position:inherit;
 margin-left: 220px;
 }
-.costumer{
-    position:inherit;
-    width: 30px;
-    height: 30px;
-    background-color: #000000;
-}
-.table{
-position:inherit;
-width: 60px;
-height: 60px;
-margin: 5px;
-}
+
 
 @media (max-width: 554px) {
   .game-display-container{

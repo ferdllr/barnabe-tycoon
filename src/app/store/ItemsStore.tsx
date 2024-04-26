@@ -31,6 +31,13 @@ type BarState = {
   setReputation: (val: number) => void;
 }
 
+type ChairState = {
+  chairs: boolean[];
+  addChair: () => void;
+  addChairCostumer: (id: number) => void;
+  removeChairCostumer: (id: number) => void;
+};
+
 export const useBarStore = create<BarState>((set) => ({
   open: false,
   reputation: 0,
@@ -52,6 +59,19 @@ export const useMesaStore = create<TableState>((set) => ({
     })),
 }));
 
+export const useChairStore = create<ChairState>((set) => ({
+  chairs: [],
+  addChair: () => set((state) => ({ chairs: [...state.chairs, false] })),
+  addChairCostumer: (id: number) =>
+    set((state) => ({
+      chairs: [...state.chairs.slice(0, id), true, ...state.chairs.slice(id + 1)],
+    })),
+    removeChairCostumer: (id: number) =>
+    set((state) => ({
+      chairs: [...state.chairs.slice(0, id), false, ...state.chairs.slice(id + 1)],
+    })),
+}));
+
 export const useStageStore = create<StageState>((set) => ({
   stage: false,
   inUse: false,
@@ -61,16 +81,16 @@ export const useStageStore = create<StageState>((set) => ({
 }));
 
 export const useMoneyStore = create<MoneyState>((set) => ({
-  money: 200,
+  money: 30,
   addMoney: (val: number) => set((state) => ({ money: state.money + val })),
   removeMoney: (val: number) => set((state) => ({ money: state.money - val })),
   setMoney: (val: number) => set({ money: val }),
 }));
 
 function getData(){
-  var storage = { money: 20, tables: [], stage: false, reputation: 0 }
+  var storage = { money: 30, tables: [], stage: false, reputation: 0, chairs: [] }
   if (typeof window != 'undefined'){
-    storage = JSON.parse(localStorage.getItem("gameSave") || '{ "money": 20, "tables": [], "stage": false , "reputation": 0}')
+    storage = JSON.parse(localStorage.getItem("gameSave") || '{ "money": 30, "tables": [], "stage": false , "reputation": 0, "chairs": []}')
   }
   
   return storage
@@ -80,3 +100,4 @@ useMesaStore.setState({ tables: getData().tables });
 useStageStore.setState({ stage: getData().stage, inUse: false });
 useMoneyStore.setState({ money: getData().money });
 useBarStore.setState({ reputation: getData().reputation });
+useChairStore.setState({ chairs: getData().chairs });
