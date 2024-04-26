@@ -135,37 +135,23 @@
     border: none;
 }
 
-.runner {
-    position: absolute; /* Para garantir que os corredores se movam independentemente */
-    transition: all 2s linear; /* Define a transição suave para a animação */
+.runner.animate {
+    animation-name: runnerMove;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
 
-.lane {
-    position: relative; /* Garante que os corredores sejam posicionados corretamente na sua lane */
-}
-
-.animate {
-    animation: runnerMove 5s linear forwards; /* Define a animação para mover o corredor */
-}
-.winner.animate{
-    animation: winnerMove 5s linear forwards;
+.winner.animate {
+    animation-name: winnerMove;
 }
 
 @keyframes runnerMove {
-    0% {
-        left: 0;
-    }
-    100% {
-        left: calc(100% - 50px); /* Mova o corredor até o fim da lane */
-    }
+    from { left: 0; }
+    to { left: calc(100% - 30px); } /* Adjust so runners don’t exit the lane */
 }
 
-
 @keyframes winnerMove {
-    0% {
-        left: 0;
-    }
-    100% {
-        left: calc(100% - 50px); /* Mova o corredor vencedor até o fim da lane */
-    }
+    0% { left: 0; }
+    95% { left: calc(100% - 30px); }
+    100% { left: calc(100% - 30px); transform: scale(1.5); } /* Scale up at the finish line for emphasis */
 }

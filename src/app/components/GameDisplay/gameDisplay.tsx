@@ -22,6 +22,7 @@ const GameDisplay = (values: params)
     return (
     <div className="game-display-container"> 
         <div className="topside-display">
+            {betMachine ? <BetMachine></BetMachine>: null}
             {stage ? <Stage HasBand={inUse}></Stage>: null}
         </div>
         <div className='middleside-display'>
@@ -35,7 +36,6 @@ const GameDisplay = (values: params)
                 <Table key={index} isFull={isFull} />
                 ))}
             </div>
-            {betMachine ? <BetMachine></BetMachine>: null}
         </div>
     </div>)
 	

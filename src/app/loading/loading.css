@@ -1,5 +1,5 @@
 
-.homepage-main{
+.loading-main{
     min-width: 558px;
     height: inherit;
     display: flex;
@@ -33,4 +33,6 @@ h1 {
     margin: 10px;
     border-radius: 6%;
 }
-
+.bolinho{
+    background-color: #4F4527;
+}

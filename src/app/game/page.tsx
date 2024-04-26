@@ -14,7 +14,7 @@ export default function Home() {
   /* hooks */
   const [menu, setMenu] = useState<JSX.Element>(<Shop></Shop>) //menu dos botoes
   const {money} = useMoneyStore() // variavel de dinheiro do jogo (ZUSTAND)
-  const {betMachine} = useBetMachine()
+  const {betMachine} = useBetMachine() 
 
   function betButton(){
     if(betMachine) return (<button className="betMachine-button" onClick={() => setMenu(<F1></F1>)}>aposta</button>)

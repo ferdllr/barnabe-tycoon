@@ -15,7 +15,7 @@ export default function Home() {
     useEffect(() => {
         const saveCheck = () => {
             if (typeof window !== 'undefined' && localStorage.getItem("gameSave") !== null){
-                setPage(<div>
+                setPage(<div className="bolinho">
                     <h1>Você já tem um jogo salvo, deseja carregá-lo?</h1>
                     <GameDisplay></GameDisplay> {/* display do jogo */}
                     <button className='choice-button' onClick={() => {router.push('/game')}}>Sim</button> {/* caso o jogador não deseje reiniciar o jogo */}
@@ -32,5 +32,5 @@ export default function Home() {
         saveCheck(); // Chama a função de verificação após a renderização inicial do componente
     }, [router]);
 
-    return(<main className='homepage-main'>{page}</main>)
+    return(<main className='loading-main'>{page}</main>)
 }
