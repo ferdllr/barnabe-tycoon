@@ -184,6 +184,17 @@ border-radius: 5%;
   border: #00000086;
 }
 
+.table-interact-buttons{
+  min-width: 50px;
+  width: 25%;
+  height: 50px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #FFE1AA;
+  border: #00000086;
+  border-radius: 5%;
+}
+
 @media (max-width: 895px) {
 	h2 {
     font-size: 100%;
@@ -192,7 +203,7 @@ border-radius: 5%;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 554px) {
   * {
     font-size: small;
   }
@@ -358,6 +369,18 @@ border-radius: 5%;
   background-color: rgb(74, 255, 58);
   color: rgb(74, 255, 58);
   border: #00000086;
+}
+
+.table-interact-buttons{
+  font-size: 9px;
+  min-width: 10px;
+  width: 25%;
+  height: 20px;
+  margin-bottom: 1%;
+  margin-right: 3%;
+  background-color: #FFE1AA;
+  border: #00000086;
+  border-radius: 5%;
 }
 
 }
