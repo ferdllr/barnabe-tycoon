@@ -1,5 +1,5 @@
 	
-import React from 'react';
+import React, { useState } from 'react';
 import {useMoneyStore, useMesaStore, useStageStore, useBarStore, useChairStore } from '../../store/ItemsStore';
 
 
@@ -23,11 +23,19 @@ const Shop = (values: params)
     const {money, removeMoney} = useMoneyStore()
     const {reputation, setReputation} = useBarStore()
     const {chairs, addChair} = useChairStore()
+    const [tableCost, setTableCost] = useState(30)
+    const [chairCost, setChairCost] = useState(10)
 
     function buyItem(price: number, func: () => void, itemType: ItemType, rep: number){ //função de comprar item, onde você define o preço e a função para adicionar ele no jogo  
       if (money < price) return
-      if (itemType == ItemType.TABLE && tables.length >= 8)return
-      if (itemType == ItemType.CHAIR && chairs.length >= 3)return
+      if (itemType == ItemType.TABLE){
+        if(tables.length >= 8) return
+        setTableCost(tableCost + (tables.length + 1) * 20)
+      }
+      if (itemType == ItemType.CHAIR){
+        if(chairs.length >= 3) return
+        setChairCost(chairCost + (chairs.length + 1) * 10)
+      }
       setReputation(reputation + rep)
       removeMoney(price)
       func()
@@ -35,8 +43,8 @@ const Shop = (values: params)
     return (<div className="main-inputs">
       <h4>utilitarios:</h4>
       <div className='itens-row'>
-      <button className='main-buttons' onClick={() => buyItem(30, addTable, ItemType.TABLE, 0.3)}>Mesa | 30R$</button>
-      <button className='main-buttons' onClick={() => buyItem(10, addChair, ItemType.CHAIR, 0.1)}>Cadeira | 10R$</button>
+      <button className='main-buttons' onClick={() => buyItem(tableCost, addTable, ItemType.TABLE, 0.3)}>Mesa | {tableCost}R$</button>
+      <button className='main-buttons' onClick={() => buyItem(chairCost, addChair, ItemType.CHAIR, 0.1)}>Cadeira | {chairCost}R$</button>
       </div>
       <h4>cosmeticos:</h4>
       <div className='itens-row'>
