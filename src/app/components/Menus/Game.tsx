@@ -52,7 +52,7 @@ const Game = (values: params)
         <h4>atender clientes:</h4>
         <div>
         {tables.map((isFull, index) => (
-            <button key={index} onClick={() => helpCustomer(index)}>
+            <button key={index} onClick={() => helpCustomer(index)} className="table-interact-buttons">
                 Mesa {index + 1}
             </button>
             ))} {/* renderiza o botao de todas as mesas dentro do array "tables" */}

@@ -30,7 +30,6 @@ const Stats = (values: params)
         <h2>Status do jogador:</h2>
         <h4>dinheiro: {money}</h4>
         <h4>mesas: {tables.length}</h4>
-        <h4>palco: {stage}</h4>
         <h4>reputação: {reputation}</h4>
         <div>
             <button onClick={() => setSave()}>salvar jogo</button>

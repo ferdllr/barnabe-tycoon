@@ -11,7 +11,7 @@ import GameDisplay from '../components/GameDisplay/gameDisplay'
 export default function Home() {
   /* hooks */
   const [menu, setMenu] = useState<JSX.Element>(<Shop></Shop>) //menu dos botoes
-  const {money} = useMoneyStore() // variavel de dinheiro do jogo
+  const {money} = useMoneyStore() // variavel de dinheiro do jogo (ZUSTAND)
 
   return (
     <main className='main'>
