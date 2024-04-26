@@ -26,7 +26,7 @@ export default function Home() {
                     </div>)
                 return
             }
-            router.push('/game')
+            router.replace('/game')
         };
 
         saveCheck(); // Chama a função de verificação após a renderização inicial do componente
