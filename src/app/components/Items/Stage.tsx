@@ -12,7 +12,7 @@ interface params {
 const Stage = (values: params)
 	
 : React.ReactNode => {
-    return (<div className="stage">  </div>) //div do palco
+    return (<div className="stage"> <img src="stage.png" alt="" /> </div>) //div do palco
 	
 }
 	

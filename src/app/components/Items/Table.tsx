@@ -12,8 +12,8 @@ interface params {
 const Table = (values: params)
 	
 : React.ReactNode => {
-	if (values.isFull) return (<div className="table"> <div className="costumer"></div> </div>) //div da mesa com cliente
-  return (<div className="table">  </div>) //div da mesa sem cliente
+	if (values.isFull) return (<div className="table"> <img src="tables/fulltable1.png" alt="" /> </div>) //div da mesa com cliente
+  return (<div className="table"> <img src="tables/emptytable1.png" alt="" /></div>) //div da mesa sem cliente
 	
 }
 	

@@ -26,9 +26,6 @@ background-color: #4e260086;
   }
 .stage{
 position:inherit;
-width: 109px;
-height: 60px;
-background-color: #5a2c00;
 margin-left: 220px;
 }
 .costumer{
@@ -41,7 +38,6 @@ margin-left: 220px;
 position:inherit;
 width: 60px;
 height: 60px;
-background-color: #ff7b00;
 margin: 5px;
 }
 

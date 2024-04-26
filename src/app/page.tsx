@@ -7,8 +7,7 @@ export default function Home() {
     return (
         <main className='homepage-main'>
             <div className='main-menu'>
-                <h1 className='main-title'>Barnabé<br />tycoon</h1>
-                <button className='play-input' onClick={() => router.push('/loading')}>Jogar</button> {/* botao para redirecionar a tela de loading */}
+                <img src='button.png' className='play-input' onClick={() => router.push('/loading') }></img> {/* botao para redirecionar a tela de loading */}
             </div>
         </main>
       )
